@@ -9,18 +9,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hightech.inventoryapp.InventoryApplication
-import com.hightech.inventoryapp.R
-import com.hightech.inventoryapp.databinding.FragmentFirstBinding
+import com.hightech.InventoryItemapp.databinding.FragmentFirstBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListItemFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
-    private val inventoryViewModel: InventoryViewModel by activityViewModels {
-        InventoryViewModelFactory((activity?.application as InventoryApplication).repository)
-    }
+    private val inventoryViewModel: InventoryViewModel by activityViewModels()
 
     private val listItemAdapter : ListItemAdapter by lazy {
         ListItemAdapter(
@@ -57,7 +55,7 @@ class ListItemFragment : Fragment() {
         })
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_listItemFragment_to_addItemFragment)
+            findNavController().navigate(ListItemFragmentDirections.actionListItemFragmentToAddItemFragment(0))
         }
     }
 

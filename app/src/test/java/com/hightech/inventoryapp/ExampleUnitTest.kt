@@ -1,4 +1,4 @@
-package com.hightech.inventoryapp
+package com.hightech.InventoryItemapp
 
 import org.junit.Test
 

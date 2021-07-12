@@ -17,24 +17,27 @@
             app:destination="@id/listDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/listDetailsFragment"
-        android:name="com.hightech.inventoryapp.presentation.details.ListDetailsFragment"
-        android:label="fragment_list_details"
-        tools:layout="@layout/fragment_list_details" >
+        android:id="@+id/addItemFragment"
+        android:name="com.hightech.inventoryapp.presentation.add.AddItemFragment"
+        android:label="AddItemFragment" >
         <action
-            android:id="@+id/action_listDetailsFragment_to_listItemFragment"
+            android:id="@+id/action_addItemFragment_to_listItemFragment"
             app:destination="@id/listItemFragment" />
         <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/addItemFragment"
-        android:name="com.hightech.inventoryapp.presentation.add.AddItemFragment"
-        android:label="fragment_add_item"
-        tools:layout="@layout/fragment_add_item" >
+        android:id="@+id/listDetailsFragment"
+        android:name="com.hightech.inventoryapp.presentation.details.ListDetailsFragment"
+        android:label="fragment_list_details"
+        tools:layout="@layout/fragment_list_details" >
+
         <action
-            android:id="@+id/action_addItemFragment_to_listItemFragment"
-            app:destination="@id/listItemFragment" />
+            android:id="@+id/action_listDetailsFragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

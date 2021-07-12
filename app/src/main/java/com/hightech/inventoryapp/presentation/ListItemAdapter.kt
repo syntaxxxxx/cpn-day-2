@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hightech.inventoryapp.data.local.Item
-import com.hightech.inventoryapp.data.local.getFormattedPrice
-import com.hightech.inventoryapp.databinding.ListItemBinding
+import com.hightech.InventoryItemapp.databinding.ListItemBinding
+import com.hightech.entity.InventoryItem
+import com.hightech.entity.getFormattedPrice
 
-class ListItemAdapter(private val onItemClicked: (Item) -> Unit): ListAdapter<Item, ListItemAdapter.ListItemViewHolder>(DiffCallback) {
+class ListItemAdapter(private val onItemClicked: (InventoryItem) -> Unit): ListAdapter<InventoryItem, ListItemAdapter.ListItemViewHolder>(
+    DiffCallback
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
         return ListItemViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context)))
@@ -25,7 +27,7 @@ class ListItemAdapter(private val onItemClicked: (Item) -> Unit): ListAdapter<It
 
     class ListItemViewHolder(private var binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Item) {
+        fun bind(item: InventoryItem) {
             binding.apply {
                 itemName.text = item.itemName
                 itemPrice.text = item.getFormattedPrice()
@@ -35,12 +37,12 @@ class ListItemAdapter(private val onItemClicked: (Item) -> Unit): ListAdapter<It
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<Item>() {
-            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-                return oldItem == newItem
+        private val DiffCallback = object : DiffUtil.ItemCallback<InventoryItem>() {
+            override fun areItemsTheSame(oldItem: InventoryItem, newItem: InventoryItem): Boolean {
+                return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            override fun areContentsTheSame(oldItem: InventoryItem, newItem: InventoryItem): Boolean {
                 return oldItem == newItem
             }
         }

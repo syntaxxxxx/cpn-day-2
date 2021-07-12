@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context=".presentation.ListItemFragment">
+    tools:context="com.hightech.inventoryapp.presentation.ListItemFragment">
 
     <TextView
         android:id="@+id/item_name"
-        style="@style/Widget.Inventory.Header"
+        style="@style/Widget.InventoryItem.Header"
         android:layout_marginStart="8dp"
         android:text="Item"
         app:layout_constraintEnd_toStartOf="@+id/item_price"
@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/item_price"
-        style="@style/Widget.Inventory.Header"
+        style="@style/Widget.InventoryItem.Header"
         android:layout_below="@+id/item_name"
         android:layout_marginStart="8dp"
         android:text="Price"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/item_quantity"
-        style="@style/Widget.Inventory.Header"
+        style="@style/Widget.InventoryItem.Header"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="8dp"
         android:text="Quantity"

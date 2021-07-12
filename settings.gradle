@@ -1,2 +1,5 @@
-rootProject.name = "InventoryApp"
+rootProject.name = "InventoryItemApp"
 include ':app'
+include ':data'
+include ':domain'
+include ':entity'

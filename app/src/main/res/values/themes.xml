@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.InventoryApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.InventoryItemApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,12 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.InventoryApp.NoActionBar">
+    <style name="Theme.InventoryItemApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.InventoryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.InventoryItemApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.InventoryApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.InventoryItemApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
