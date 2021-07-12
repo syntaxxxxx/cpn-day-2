@@ -43,9 +43,8 @@ class InventoryViewModel @Inject constructor(private val interactor: InventoryIt
     fun getItemBy(id: Int): LiveData<InventoryItem> = interactor.getItemBy(id)
 
     fun sellItem(item: InventoryItem) {
-        if(item.quantityInStock > 0) {
-            val newItem = item.copy(quantityInStock = item.quantityInStock - 1)
-            update(newItem)
+        viewModelScope.launch {
+            interactor.sell(item)
         }
     }
 
