@@ -25,7 +25,7 @@ class ListItemAdapter(private val onItemClicked: (InventoryItem) -> Unit): ListA
         holder.bind(currentPosition)
     }
 
-    class ListItemViewHolder(private var binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ListItemViewHolder constructor(private var binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: InventoryItem) {
             binding.apply {

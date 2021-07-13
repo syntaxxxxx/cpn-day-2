@@ -6,12 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hightech.domain.usecase.InventoryItemInteractor
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class InventoryViewModel @Inject constructor(private val interactor: InventoryItemInteractor) :
+class InventoryViewModel constructor(private val interactor: InventoryItemInteractor) :
     ViewModel() {
 
     val allItems: LiveData<List<InventoryItem>> = interactor.getItems()

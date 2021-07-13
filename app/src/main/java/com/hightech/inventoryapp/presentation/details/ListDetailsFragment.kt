@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -14,9 +13,8 @@ import com.hightech.InventoryItemapp.databinding.FragmentListDetailsBinding
 import com.hightech.entity.InventoryItem
 import com.hightech.entity.getFormattedPrice
 import com.hightech.inventoryapp.presentation.InventoryViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-@AndroidEntryPoint
 class ListDetailsFragment : Fragment() {
 
     private var _binding: FragmentListDetailsBinding? = null
@@ -25,7 +23,7 @@ class ListDetailsFragment : Fragment() {
     private val safeArgs: ListDetailsFragmentArgs by navArgs()
     lateinit var item: InventoryItem
 
-    private val inventoryViewModel: InventoryViewModel by activityViewModels()
+    private val inventoryViewModel: InventoryViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
