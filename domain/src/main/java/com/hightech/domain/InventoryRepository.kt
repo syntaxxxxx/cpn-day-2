@@ -3,7 +3,7 @@ package com.hightech.domain
 import androidx.lifecycle.LiveData
 import com.hightech.entity.InventoryItem
 
-interface InventoryItemRepository {
+interface InventoryRepository {
     fun getItems() : LiveData<List<InventoryItem>>
     suspend fun insert(item: InventoryItem)
     fun getItemBy(id: Int): LiveData<InventoryItem>

@@ -14,9 +14,8 @@ import com.hightech.InventoryItemapp.databinding.FragmentListDetailsBinding
 import com.hightech.entity.InventoryItem
 import com.hightech.entity.getFormattedPrice
 import com.hightech.inventoryapp.presentation.InventoryViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-@AndroidEntryPoint
 class ListDetailsFragment : Fragment() {
 
     private var _binding: FragmentListDetailsBinding? = null
@@ -25,7 +24,7 @@ class ListDetailsFragment : Fragment() {
     private val safeArgs: ListDetailsFragmentArgs by navArgs()
     lateinit var item: InventoryItem
 
-    private val inventoryViewModel: InventoryViewModel by activityViewModels()
+    private val inventoryViewModel: InventoryViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +51,7 @@ class ListDetailsFragment : Fragment() {
             itemName.text = item.itemName
             itemPrice.text = item.getFormattedPrice()
             itemCount.text = item.quantityInStock.toString()
-            sellItem.setOnClickListener { inventoryViewModel.sellItem(item) }
+            sellItem.setOnClickListener { inventoryViewModel.sell(item) }
             deleteItem.setOnClickListener { showConfirmationDialog() }
             editItem.setOnClickListener { editItem() }
         }

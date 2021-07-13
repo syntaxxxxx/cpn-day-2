@@ -5,7 +5,7 @@ import androidx.room.*
 import com.hightech.entity.InventoryItem
 
 @Dao
-interface InventoryItemDao {
+interface InventoryDao {
 
     @Query("SELECT * from InventoryItem ORDER BY id DESC")
     fun getItems(): LiveData<List<InventoryItem>>

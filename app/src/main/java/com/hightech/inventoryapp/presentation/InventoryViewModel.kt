@@ -5,13 +5,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hightech.domain.usecase.InventoryItemInteractor
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.hightech.domain.usecase.InventoryInteractor
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class InventoryViewModel @Inject constructor(private val interactor: InventoryItemInteractor) :
+class InventoryViewModel constructor(private val interactor: InventoryInteractor) :
     ViewModel() {
 
     val allItems: LiveData<List<InventoryItem>> = interactor.getItems()
@@ -42,10 +39,9 @@ class InventoryViewModel @Inject constructor(private val interactor: InventoryIt
 
     fun getItemBy(id: Int): LiveData<InventoryItem> = interactor.getItemBy(id)
 
-    fun sellItem(item: InventoryItem) {
-        if(item.quantityInStock > 0) {
-            val newItem = item.copy(quantityInStock = item.quantityInStock - 1)
-            update(newItem)
+    fun sell(item: InventoryItem) {
+        viewModelScope.launch {
+            interactor.sell(item)
         }
     }
 
@@ -72,23 +68,3 @@ class InventoryViewModel @Inject constructor(private val interactor: InventoryIt
     }
 
 }
-
-//class InventoryViewModelFactory constructor(private val interactor: InventoryItemInteractor) : ViewModelProvider.Factory {
-//
-//    companion object {
-//        @Volatile
-//        private var INSTANCE: InventoryViewModelFactory? = null
-//
-//        fun getInstance(context: Context): InventoryViewModelFactory = INSTANCE ?: synchronized(this) {
-//            INSTANCE ?: InventoryViewModelFactory(Injection.provideInteractor(context))
-//        }
-//    }
-//
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {
-//            @Suppress("UNCHECKED_CAST")
-//            return InventoryViewModel(interactor) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class")
-//    }
-//}
