@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.hightech.InventoryItemapp.databinding.ActivityMainBinding
+import com.hightech.inventoryapp.presentation.InventoryViewModel
 
 class MainActivity : AppCompatActivity() {
 
