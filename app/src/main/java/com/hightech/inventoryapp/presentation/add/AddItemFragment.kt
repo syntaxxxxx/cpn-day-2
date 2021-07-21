@@ -12,14 +12,17 @@ import androidx.navigation.fragment.navArgs
 import com.hightech.InventoryItemapp.databinding.FragmentAddItemBinding
 import com.hightech.entity.InventoryItem
 import com.hightech.inventoryapp.presentation.InventoryViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import com.hightech.inventoryapp.presentation.InventoryViewModelFactory
 
 class AddItemFragment : Fragment() {
 
     private var _binding: FragmentAddItemBinding? = null
     private val binding get() = _binding!!
 
-    private val inventoryViewModel: InventoryViewModel by sharedViewModel()
+    private val inventoryViewModel: InventoryViewModel by activityViewModels{
+        InventoryViewModelFactory.getInstance(requireContext())
+    }
+
     private val safeArgs: AddItemFragmentArgs by navArgs()
     lateinit var item: InventoryItem
 

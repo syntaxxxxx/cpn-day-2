@@ -11,6 +11,15 @@ import kotlinx.coroutines.withContext
 class InventoryRepositoryImpl constructor(private val dao: InventoryDao) :
     InventoryRepository {
 
+        companion object {
+        @Volatile
+        private var INSTANCE: InventoryRepositoryImpl? = null
+
+        fun getInstance(dao: InventoryDao): InventoryRepositoryImpl = INSTANCE ?: synchronized(this) {
+            INSTANCE ?: InventoryRepositoryImpl(dao)
+        }
+    }
+
     override fun getItems(): LiveData<List<InventoryItem>> = dao.getItems()
     override suspend fun insert(item: InventoryItem) {
         withContext(Dispatchers.IO) {

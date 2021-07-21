@@ -1,15 +1,22 @@
 package com.hightech.inventoryapp.utils
 
-//object Injection {
-//
-//    fun provideRepository(context: Context) : InventoryItemRepository {
-//        val database = InventoryRoomDatabase.getDatabase(context)
-//        return InventoryItemRepositoryImpl(database.InventoryItemDao())
-//    }
-//
-//    fun provideInteractor(context: Context) : InventoryItemInteractor {
-//        val repository = provideRepository(context)
-//        return InventoryItemUseCase(repository)
-//    }
-//
-//}
+import android.content.Context
+import com.hightech.data.InventoryRepositoryImpl
+import com.hightech.data.local.InventoryRoomDatabase
+import com.hightech.domain.InventoryRepository
+import com.hightech.domain.usecase.InventoryInteractor
+import com.hightech.domain.usecase.InventoryUseCase
+
+object Injection {
+
+    fun provideRepository(context: Context) : InventoryRepository {
+        val database = InventoryRoomDatabase.getDatabase(context)
+        return InventoryRepositoryImpl(database.inventoryDao())
+    }
+
+    fun provideInteractor(context: Context) : InventoryInteractor {
+        val repository = provideRepository(context)
+        return InventoryUseCase(repository)
+    }
+
+}

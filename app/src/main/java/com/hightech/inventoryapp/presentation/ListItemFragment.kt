@@ -10,14 +10,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hightech.InventoryItemapp.databinding.FragmentFirstBinding
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ListItemFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
-    private val inventoryViewModel: InventoryViewModel by sharedViewModel()
+    private val inventoryViewModel: InventoryViewModel by activityViewModels{
+        InventoryViewModelFactory.getInstance(requireContext())
+    }
 
     private val listItemAdapter : ListItemAdapter by lazy {
         ListItemAdapter(
