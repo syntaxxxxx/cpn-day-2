@@ -59,6 +59,10 @@ dependencies {
     implementation rootProject.ext.architectureComponents.navigationUi
     implementation rootProject.ext.architectureComponents.navigationFragment
 
+    implementation rootProject.ext.architectureComponents.roomKtx
+    kapt rootProject.ext.architectureComponents.roomCompiler
+    annotationProcessor rootProject.ext.architectureComponents.roomCompiler
+
     implementation rootProject.ext.misc.koinCore
     implementation rootProject.ext.misc.koinAndroid
     implementation rootProject.ext.misc.koinAndroidScope
@@ -68,4 +72,5 @@ dependencies {
     testImplementation rootProject.ext.testing.junit
     androidTestImplementation rootProject.ext.testing.extJunit
     androidTestImplementation rootProject.ext.testing.espressoCore
+    implementation "androidx.work:work-runtime-ktx:2.6.0-beta01"
 }

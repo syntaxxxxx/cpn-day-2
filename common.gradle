@@ -54,4 +54,5 @@ dependencies {
     testImplementation rootProject.ext.testing.junit
     androidTestImplementation rootProject.ext.testing.extJunit
     androidTestImplementation rootProject.ext.testing.espressoCore
+    implementation "androidx.work:work-runtime-ktx:2.6.0-beta01"
 }
