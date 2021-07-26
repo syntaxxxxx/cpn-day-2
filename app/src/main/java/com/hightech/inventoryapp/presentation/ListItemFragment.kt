@@ -16,9 +16,7 @@ class ListItemFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
-    private val inventoryViewModel: InventoryViewModel by activityViewModels{
-        InventoryViewModelFactory.getInstance(requireContext())
-    }
+    private val inventoryViewModel: InventoryViewModel by activityViewModels()
 
     private val listItemAdapter : ListItemAdapter by lazy {
         ListItemAdapter(

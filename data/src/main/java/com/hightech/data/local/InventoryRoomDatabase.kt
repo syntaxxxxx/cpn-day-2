@@ -11,22 +11,22 @@ abstract class InventoryRoomDatabase : RoomDatabase() {
 
     abstract fun inventoryDao() : InventoryDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE : InventoryRoomDatabase? = null
-
-        fun getDatabase(context: Context) : InventoryRoomDatabase {
-
-            /**
-             * If the INSTANCE is not null, then return it
-             * If it is, then create the database
-             * */
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(context, InventoryRoomDatabase::class.java, "item_database").build()
-                INSTANCE = instance
-                instance
-            }
-        }
-    }
+//    companion object {
+//        @Volatile
+//        private var INSTANCE : InventoryRoomDatabase? = null
+//
+//        fun getDatabase(context: Context) : InventoryRoomDatabase {
+//
+//            /**
+//             * If the INSTANCE is not null, then return it
+//             * If it is, then create the database
+//             * */
+//            return INSTANCE ?: synchronized(this) {
+//                val instance = Room.databaseBuilder(context, InventoryRoomDatabase::class.java, "item_database").build()
+//                INSTANCE = instance
+//                instance
+//            }
+//        }
+//    }
 
 }

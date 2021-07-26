@@ -1,14 +1,11 @@
 package com.hightech.inventoryapp.presentation
 
-import android.content.Context
 import com.hightech.entity.InventoryItem
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.hightech.domain.usecase.InventoryInteractor
-import com.hightech.inventoryapp.utils.Injection
 import kotlinx.coroutines.launch
 
 class InventoryViewModel constructor(private val interactor: InventoryInteractor) :
@@ -72,22 +69,22 @@ class InventoryViewModel constructor(private val interactor: InventoryInteractor
 
 }
 
-class InventoryViewModelFactory constructor(private val interactor: InventoryInteractor) : ViewModelProvider.Factory {
-
-    companion object {
-        @Volatile
-        private var INSTANCE: InventoryViewModelFactory? = null
-
-        fun getInstance(context: Context): InventoryViewModelFactory = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: InventoryViewModelFactory(Injection.provideInteractor(context))
-        }
-    }
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return InventoryViewModel(interactor) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+//class InventoryViewModelFactory constructor(private val interactor: InventoryInteractor) : ViewModelProvider.Factory {
+//
+//    companion object {
+//        @Volatile
+//        private var INSTANCE: InventoryViewModelFactory? = null
+//
+//        fun getInstance(context: Context): InventoryViewModelFactory = INSTANCE ?: synchronized(this) {
+//            INSTANCE ?: InventoryViewModelFactory(Injection.provideInteractor(context))
+//        }
+//    }
+//
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {
+//            @Suppress("UNCHECKED_CAST")
+//            return InventoryViewModel(interactor) as T
+//        }
+//        throw IllegalArgumentException("Unknown ViewModel class")
+//    }
+//}
